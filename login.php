@@ -15,6 +15,7 @@ include 'library/load.php';
 
     <!-- Bootstrap core CSS -->
 <link href="/photogram/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
