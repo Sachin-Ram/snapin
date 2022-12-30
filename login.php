@@ -11,8 +11,6 @@ include 'library/load.php';
     <meta name="generator" content="Hugo 0.84.0">
     <title>PHOTOGRAM</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
-
     
 
     <!-- Bootstrap core CSS -->
@@ -32,8 +30,33 @@ include 'library/load.php';
           font-size: 3.5rem;
         }
       }
+      
     </style>
 
+   <style>
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+ </style>
     
   </head>
   <body>
@@ -64,9 +87,9 @@ include 'library/load.php';
 <main>
 
   
-    <?load_template('_calltoaction'); ?>
+    <?load_template('_login'); ?>
       
-    <?load_template('_photos');?>
+
 
 
 
