@@ -10,15 +10,26 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
-    <link href= "/photogram/styling/<?basename($_SERVER['PHP_SELF'] , ".php")?> .css " rel='stylesheet'>
 
+    <?php
+if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVER['PHP_SELF'], ".php").".css")) {
+    print("exist");
+?>
+ <link href= "/photogram/styling/<?=basename($_SERVER['PHP_SELF'], ".php");?>.css" rel='stylesheet'>
+
+    <?} else {
+    print("not exist");
+}
+?>
+    
+   
+ 
     
 
     <!-- Bootstrap core CSS -->
-<link href="/photogram/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/photogram/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<? print_r($_SERVER);
-print(basename($_SERVER['PHP_SELF'] , ".php"))?>
+
 
 
     
