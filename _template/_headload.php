@@ -21,7 +21,7 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVE
     print("not exist");
 }
 ?>
-    
+</head>    
    
  
     

@@ -16,7 +16,7 @@
       <label for="floatingPassword">Password</label>
     </div>
     <div class="form-floating">
-      <input name="mobilenumbers" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input name="mobilenumber" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Phone Number</label>
     </div>
 
