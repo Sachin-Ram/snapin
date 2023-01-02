@@ -1,5 +1,19 @@
+<?
+if(isset($_POST['username']) and isset($_POST['password'])){
+  $u_mail=$_POST['username'];
+  $u_password=$_POST['password'];
+  $logininfo=login($u_mail,$u_password);
+} 
+
+?>
+<?
+if ($logininfo) {
+  print("you can log in ");
+}
+else{
+    ?>
 <main class="form-signin">
-  <form method="post" action='index.php'>
+  <form method="post" action='login.php'>
     <img class="mb-3" src="https://th.bing.com/th/id/OIP.7kYeBsu09jOHSZr6aByOVQHaER?pid=ImgDet&rs=1" alt="" width="300" height="150">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -21,3 +35,4 @@
     
   </form>
 </main>
+<?}?>

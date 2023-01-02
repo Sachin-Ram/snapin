@@ -42,7 +42,7 @@ function signup($name, $pass, $email, $phnumber)
             // echo "Error: " . $sql . "<br>" . $conn->error;
             $result=true;
         }
-    } catch(exception $e) {
+    } catch(Exception $e) {
     }
 
 
@@ -50,3 +50,46 @@ function signup($name, $pass, $email, $phnumber)
     return $result;
     // print($result);
 }
+
+
+function login($mail, $pass)
+{
+    $servername = "mysql.selfmade.ninja:3306";
+    $username = "sachin";
+    $password = "sachinram10";
+    $dbname = "sachin_photogramdb";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        print("connection failed");
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT `EMAIL`, `PASSWORD` FROM `authentication` LIMIT 50";
+    $resultlogin=$conn->query($sql);
+    $resarr=$resultlogin->fetch_assoc();
+    $logincredentials=false;
+    // print_r($resarr);
+    
+    try{ 
+        if ($resarr['EMAIL']!=$mail or $resarr['PASSWORD']!=$pass) {
+        $logincredentials=false;
+        throw new Exception();
+      } 
+    else 
+    {
+        $logincredentials=true;
+    }
+}
+    catch(exception $e){
+            print("error");
+    }
+   
+
+        $conn->close();
+        return $logincredentials;
+}      
+   
+

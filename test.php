@@ -31,17 +31,23 @@ $dir2=basename($_SERVER['PHP_SELF'], '.php');
 
 <?php
 include 'library/load.php';
-if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVER['PHP_SELF'], ".php").".css")) {
-    print("exist");
-} else {
-    print("not exist");
-}
+// if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVER['PHP_SELF'], ".php").".css")) {
+//     print("exist");
+// } else {
+//     print("not exist");
+// }
 if (signup("test03", "pass", "xyz@gmail.com", "123456")) {
     echo "success";
 } else {
     echo "failure";
 }
 // print_r($_POST);
+if (login("admin@selfmade.ninja","1234")){
+    print("you can login in");
+}
+else{
+    print("you cant");
+}
 ?>
 
 
