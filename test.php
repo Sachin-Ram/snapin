@@ -16,7 +16,7 @@
 </html> -->
 <pre>
 <?php
-include '../photogram/library/load.php';
+
 print_r($_SERVER);
 // print(basename($_SERVER['PHP_SELF'], '.php'));
 $dir='photogram/styling/';
@@ -30,11 +30,18 @@ $dir2=basename($_SERVER['PHP_SELF'], '.php');
 </pre>
 
 <?php
+include 'library/load.php';
 if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVER['PHP_SELF'], ".php").".css")) {
     print("exist");
 } else {
     print("not exist");
 }
+// if(signup("test02","pass","1234@gma.com","123456")){
+//     echo "success";
+// }
+// else{
+//     echo "failure";
+// }
+print_r($_POST);
 ?>
-
 

@@ -13,15 +13,13 @@
 
     <?php
 if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVER['PHP_SELF'], ".php").".css")) {
-    print("exist");
-?>
+    ?>
  <link href= "/photogram/styling/<?=basename($_SERVER['PHP_SELF'], ".php");?>.css" rel='stylesheet'>
 
-    <?} else {
-    print("not exist");
+    <?php
 }
-?>
-</head>    
+    ?>
+  
    
  
     

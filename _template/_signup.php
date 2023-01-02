@@ -1,5 +1,5 @@
 <main class="form-signup">
-  <form method="post" action='index.php'>
+  <form method="post" action='signup.php'>
     <img class="mb-3" src="https://th.bing.com/th/id/OIP.7kYeBsu09jOHSZr6aByOVQHaER?pid=ImgDet&rs=1" alt="" width="300" height="150">
     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
