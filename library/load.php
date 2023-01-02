@@ -28,20 +28,25 @@ function signup($name, $pass, $email, $phnumber)
     if ($conn->connect_error) {
         print("connection failed");
         die("Connection failed: " . $conn->connect_error);
-    } else {
-        print("db connected");
     }
-    $sql = "INSERT INTO `authentication` (`USERNAME`, `PASSWORD`, `EMAIL`, `PHONE NUMBER`, `BLOCKED`, `ACTIVE`)
+    try {
+        $sql = "INSERT INTO `authentication` (`USERNAME`, `PASSWORD`, `EMAIL`, `PHONE NUMBER`, `BLOCKED`, `ACTIVE`)
     VALUES ('$name', '$pass', '$email', '$phnumber', '0', '1')";
-    $result =false;
-    if ($conn->query($sql) === true) {
-        // echo "New record created successfully";
-        $result=true;
-    } else {
-        // echo "Error: " . $sql . "<br>" . $conn->error;
-        $result=false;
+        $result =false;
+
+        if ($conn->query($sql) === false) {
+            // echo "New record created successfully";
+            $result=false;
+            throw new Exception();
+        } else {
+            // echo "Error: " . $sql . "<br>" . $conn->error;
+            $result=true;
+        }
+    } catch(exception $e) {
     }
 
-    $conn->close();
+
+        $conn->close();
     return $result;
+    // print($result);
 }

@@ -36,12 +36,12 @@ if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVE
 } else {
     print("not exist");
 }
-// if(signup("test02","pass","1234@gma.com","123456")){
-//     echo "success";
-// }
-// else{
-//     echo "failure";
-// }
-print_r($_POST);
+if (signup("test03", "pass", "xyz@gmail.com", "123456")) {
+    echo "success";
+} else {
+    echo "failure";
+}
+// print_r($_POST);
 ?>
+
 

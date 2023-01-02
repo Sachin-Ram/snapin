@@ -1,5 +1,41 @@
+<?php
+$signinfo=false;
+if (isset($_POST['username']) and isset($_POST['password']) and isset($_POST['mail_address']) and isset($_POST['mobilenumber'])) {
+    $user=$_POST['username'];
+    $pass=$_POST['password'];
+    $mail=$_POST['mail_address'];
+    $number=$_POST['mobilenumber'];
+    $res=signup($user, $pass, $mail, $number);
+    $signinfo=true;
+}
+
+?>
+
+
+<?php
+if ($signinfo) {
+    if ($res) {
+        ?>
+
+<main class="container">
+ <div class="bg-light mt-3 rounded p-5">
+  <h1>login successfull</h1>
+  <p class="lead"><a href="<?=$_SERVER['DOCUMENT_ROOT']?>/photogram/login.php">click here to login</a></p>
+ </div>
+</main>
+   
+  <?} else {?>
+    <main class="container">
+ <div class="bg-light mt-3 rounded p-5">
+  <h1>sign up failed</h1>
+  <p class="lead">please enter proper values</p>
+ </div>
+</main>
+ <?php }
+  } else {
+      ?>
 <main class="form-signup">
-  <form method="post" action='signup.php'>
+ <form method="post" action='signup.php'>
     <img class="mb-3" src="https://th.bing.com/th/id/OIP.7kYeBsu09jOHSZr6aByOVQHaER?pid=ImgDet&rs=1" alt="" width="300" height="150">
     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
@@ -19,9 +55,11 @@
       <input name="mobilenumber" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Phone Number</label>
     </div>
+    <button class="w-100 btn btn-lg btn-primary hvr-underline-reveal" type="submit">Sign up</button>
+  </form>
+  
 
   
-    <button class="w-100 btn btn-lg btn-primary hvr-underline-reveal" type="submit">Sign up</button>
-    
-  </form>
+  
 </main>
+<?}?>
