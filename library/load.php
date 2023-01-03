@@ -72,24 +72,20 @@ function login($mail, $pass)
     $resarr=$resultlogin->fetch_assoc();
     $logincredentials=false;
     // print_r($resarr);
-    
-    try{ 
-        if ($resarr['EMAIL']!=$mail or $resarr['PASSWORD']!=$pass) {
+
+    // try{
+    if ($resarr['EMAIL']!=$mail or $resarr['PASSWORD']!=$pass) {
         $logincredentials=false;
-        throw new Exception();
-      } 
-    else 
-    {
+    // throw new Exception();
+    } else {
         $logincredentials=true;
     }
+    // }
+    // catch(exception $e){
+    //         print("error");
+    // }
+
+
+    $conn->close();
+    return $logincredentials;
 }
-    catch(exception $e){
-            print("error");
-    }
-   
-
-        $conn->close();
-        return $logincredentials;
-}      
-   
-

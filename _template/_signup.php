@@ -1,6 +1,6 @@
 <?php
 $signinfo=false;
-if (isset($_POST['username']) and isset($_POST['password']) and isset($_POST['mail_address']) and isset($_POST['mobilenumber'])) {
+if (isset($_POST['username']) and isset($_POST['password']) and !empty($_POST['password']) and isset($_POST['mail_address']) and isset($_POST['mobilenumber'])) {
     $user=$_POST['username'];
     $pass=$_POST['password'];
     $mail=$_POST['mail_address'];
