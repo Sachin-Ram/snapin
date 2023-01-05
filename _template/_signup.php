@@ -5,7 +5,7 @@ if (isset($_POST['username']) and isset($_POST['password']) and !empty($_POST['p
     $pass=$_POST['password'];
     $mail=$_POST['mail_address'];
     $number=$_POST['mobilenumber'];
-    $res=signup($user, $pass, $mail, $number);
+    $res=user::signup($user, $pass, $mail, $number);
     $signinfo=true;
 }
 

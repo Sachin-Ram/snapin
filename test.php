@@ -36,18 +36,37 @@ include 'library/load.php';
 // } else {
 //     print("not exist");
 // }
-if (signup("test03", "pass", "xyz@gmail.com", "123456")) {
-    echo "success";
-} else {
-    echo "failure";
-}
-// print_r($_POST);
-if (login("admin@selfmade.ninja","1234")){
-    print("you can login in");
+// if (signup("test03", "pass", "xyz@gmail.com", "123456")) {
+//     echo "success";
+// } else {
+//     echo "failure";
+// }
+// // print_r($_POST);
+// if (login("admin@selfmade.ninja", "1234")) {
+//     print("you can login in");
+// } else {
+//     print("you cant");
+// }
+?>
+<pre>
+<?php
+// database::connection();
+// database::connection();>
+session::start();
+echo "startting a session \n";
+if(session::isset('test')){
+    echo "already value exist";
+    //session::get($test);
+    print("\n".$_SESSION["test"]);
 }
 else{
-    print("you cant");
+    echo "assigning new value";
+    session::set('test',time());
+    print($_SESSION["test"]);
 }
+// session::destroy();
+// echo "\n destroying session";
 ?>
 
+</pre>
 
