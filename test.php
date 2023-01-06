@@ -36,11 +36,14 @@ include 'library/load.php';
 // } else {
 //     print("not exist");
 // }
-// if (signup("test03", "pass", "xyz@gmail.com", "123456")) {
-//     echo "success";
-// } else {
-//     echo "failure";
-// }
+$res=user::signup("test03", "pass", "xyz@gmail.com", "123456");
+echo $res;
+
+if (user::signup("test03", "pass", "xyz@gmail.com", "123456")) {
+    echo "success";
+} else {
+    echo "failure";
+}
 // // print_r($_POST);
 // if (login("admin@selfmade.ninja", "1234")) {
 //     print("you can login in");
@@ -52,20 +55,22 @@ include 'library/load.php';
 <?php
 // database::connection();
 // database::connection();>
-session::start();
-echo "startting a session \n";
-if(session::isset('test')){
-    echo "already value exist";
-    //session::get($test);
-    print("\n".$_SESSION["test"]);
-}
-else{
-    echo "assigning new value";
-    session::set('test',time());
-    print($_SESSION["test"]);
-}
+// session::start();
+// echo "startting a session \n";
+// if (session::isset('test')) {
+//     echo "already value exist";
+//     //session::get($test);
+//     print("\n".$_SESSION["test"]);
+// } else {
+//     echo "assigning new value";
+//     session::set('test', time());
+//     print($_SESSION["test"]);
+// }
 // session::destroy();
 // echo "\n destroying session";
+// $p="somestrong password";
+// echo $p;
+// echo md5($p);
 ?>
 
 </pre>

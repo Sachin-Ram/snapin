@@ -1,4 +1,5 @@
 <?php
+
 include_once 'includes/database.class.php';
 include_once 'includes/session.class.php';
 include_once 'includes/user.class.php';
@@ -24,27 +25,15 @@ function load_template($name)
 
 function login($mail, $pass)
 {
-    $servername = "mysql.selfmade.ninja:3306";
-    $username = "sachin";
-    $password = "sachinram10";
-    $dbname = "sachin_photogramdb";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        print("connection failed");
-        die("Connection failed: " . $conn->connect_error);
-    }
-
+    $conn=database::connection();
     $sql = "SELECT `EMAIL`, `PASSWORD` FROM `authentication` LIMIT 50";
     $resultlogin=$conn->query($sql);
     $resarr=$resultlogin->fetch_assoc();
     $logincredentials=false;
-    // print_r($resarr);
-
+    //print_r($resarr);
+    //print(md5($pass));
     // try{
-    if ($resarr['EMAIL']!=$mail or $resarr['PASSWORD']!=$pass) {
+    if ($resarr['EMAIL']!=$mail or $resarr['PASSWORD']!=md5($pass)) {
         $logincredentials=false;
     // throw new Exception();
     } else {

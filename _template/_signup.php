@@ -29,6 +29,7 @@ if ($signinfo) {
  <div class="bg-light mt-3 rounded p-5">
   <h1>sign up failed</h1>
   <p class="lead">please enter proper values</p>
+  <p class="lead"><?=$res?></p>
  </div>
 </main>
  <?php }
