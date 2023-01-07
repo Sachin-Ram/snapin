@@ -28,4 +28,41 @@ class user
         //return $result;
         // print($result);
     }
+
+    public static function login($mail, $pass)
+    {
+        $conn=database::connection();
+        $sql = "SELECT * FROM `authentication` WHERE `EMAIL` = '$mail'";
+        try {
+            $resultlogin = $conn->query($sql);
+            throw new Exception();
+        } catch(Exception $e) {
+        }
+        print_r($resultlogin);
+        if ($resultlogin->num_rows==1) {
+            $resarr = $resultlogin->fetch_assoc();
+            if ($resarr['PASSWORD'] === md5($pass)) {
+                return $resarr;
+            // throw new Exception();
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+
+        // print_r($resarr);
+        // echo $resarr['PASSWORD'];
+        //print(md5($pass));
+        // try{
+
+        // }
+        // catch(exception $e){
+        //         print("error");
+        // }
+
+
+        // $conn->close();
+    }
 }

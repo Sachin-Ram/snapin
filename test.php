@@ -36,20 +36,20 @@ include 'library/load.php';
 // } else {
 //     print("not exist");
 // }
-$res=user::signup("test03", "pass", "xyz@gmail.com", "123456");
-echo $res;
+// $res=user::signup("test03", "pass", "xyz@gmail.com", "123456");
+// echo $res;
 
-if (user::signup("test03", "pass", "xyz@gmail.com", "123456")) {
-    echo "success";
-} else {
-    echo "failure";
-}
-// // print_r($_POST);
-// if (login("admin@selfmade.ninja", "1234")) {
-//     print("you can login in");
+// if (user::signup("test03", "pass", "xyz@gmail.com", "123456")) {
+//     echo "success";
 // } else {
-//     print("you cant");
+//     echo "failure";
 // }
+// // print_r($_POST);
+if (user::login('akash001@gmail.com', 'admin10')) {
+    print("you can login in");
+} else {
+    print("you cant");
+}
 ?>
 <pre>
 <?php
