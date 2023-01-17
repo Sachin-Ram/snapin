@@ -11,6 +11,7 @@ class database
             $username = "sachin";
             $password = "sachinram10";
             $dbname = "sachin_photogramdb";
+            //TODO : add seperate configuration file
 
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
