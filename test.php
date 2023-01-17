@@ -44,8 +44,8 @@ include 'library/load.php';
 // } else {
 //     echo "failure";
 // }
-// // print_r($_POST);
-if (user::login('akash001@gmail.com', 'admin10')) {
+// print_r($_POST);
+if (user::login('admin1@example.com', 'admin1')) {
     print("you can login in");
 } else {
     print("you cant");

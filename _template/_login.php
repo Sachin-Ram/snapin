@@ -1,16 +1,15 @@
-<?
-if(isset($_POST['username']) and isset($_POST['password'])){
-  $u_mail=$_POST['username'];
-  $u_password=$_POST['password'];
-  $logininfo=login($u_mail,$u_password);
-} 
+<?php
+if (isset($_POST['username']) and isset($_POST['password'])) {
+    $u_mail=$_POST['username'];
+    $u_password=$_POST['password'];
+    $logininfo=user::login($u_mail, $u_password);
+}
 
 ?>
-<?
+<?php
 if ($logininfo) {
-  print("you can log in ");
-}
-else{
+    print("you can log in ");
+} else {
     ?>
 <main class="form-signin">
   <form method="post" action='login.php'>
