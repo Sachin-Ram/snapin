@@ -92,6 +92,21 @@ class user
     }
 
 
+    public function __call($name, $arguments)
+    {
+        $property = preg_replace("/[^0-9a-zA-Z]/", "", substr($name, 3));
+        $property = (preg_replace('/\B([A-Z])/', '_$1', $property));
+        //echo $property;
+
+        if (substr($name, 0, 3)=="get") {
+            return $this->getdata($property);
+        } elseif (substr($name, 0, 3)=="set") {
+            return $this->setdata($property, $arguments[0]);
+        }
+    }
+
+
+
     public function authenticate()
     {
     }
@@ -127,56 +142,56 @@ class user
         }
     }
 
-    public function setfirstname($name)
-    {
-        return $this->setdata("FIRST NAME", $name);
-    }
-    public function getfirstname()
-    {
-        return $this->getdata("FIRST NAME");
-    }
-    public function setlastname($name)
-    {
-        return $this->setdata("LAST NAME", $name);
-    }
-    public function getlastname()
-    {
-        return $this->getdata("LAST NAME");
-    }
+    // public function setfirstname($name)
+    // {
+    //     return $this->setdata("FIRST NAME", $name);
+    // }
+    // public function getfirstname()
+    // {
+    //     return $this->getdata("FIRST NAME");
+    // }
+    // public function setlastname($name)
+    // {
+    //     return $this->setdata("LAST NAME", $name);
+    // }
+    // public function getlastname()
+    // {
+    //     return $this->getdata("LAST NAME");
+    // }
     public function setdateofbirth($year, $month, $day)
     {
         if (checkdate($month, $day, $year)) {
             return $this->setdob("DOB", $year.$month.$day);
         }
     }
-    public function getdateofbirth()
-    {
-        return $this->getdata("DOB");
-    }
-    public function settwitter($link)
-    {
-        return $this->setdata("TWITTER", $link);
-    }
+    // public function getdateofbirth()
+    // {
+    //     return $this->getdata("DOB");
+    // }
+    // public function settwitter($link)
+    // {
+    //     return $this->setdata("TWITTER", $link);
+    // }
 
-    public function gettwitter()
-    {
-        return $this->getdata("TWITTER");
-    }
-    public function setfacebook($link)
-    {
-        return $this->setdata("FACEBOOK", $link);
-    }
-    public function getfacebook()
-    {
-        return $this->getdata("FACEBOOK");
-    }
-    public function setinsta($link)
-    {
-        return $this->setdata("INSTAGRAM", $link);
-    }
+    // public function gettwitter()
+    // {
+    //     return $this->getdata("TWITTER");
+    // }
+    // public function setfacebook($link)
+    // {
+    //     return $this->setdata("FACEBOOK", $link);
+    // }
+    // public function getfacebook()
+    // {
+    //     return $this->getdata("FACEBOOK");
+    // }
+    // public function setinsta($link)
+    // {
+    //     return $this->setdata("INSTAGRAM", $link);
+    // }
 
-    public function getinsta()
-    {
-        return $this->getdata("INSTAGRAM");
-    }
+    // public function getinsta()
+    // {
+    //     return $this->getdata("INSTAGRAM");
+    // }
 }

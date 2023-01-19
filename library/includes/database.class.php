@@ -1,5 +1,7 @@
 <?php
 
+//include_once 'library/load.php';
+
 class database
 {
     public static $connection=null;
@@ -7,10 +9,10 @@ class database
     public static function connection()
     {
         if (database::$connection==null) {
-            $servername = "mysql.selfmade.ninja:3306";
-            $username = "sachin";
-            $password = "sachinram10";
-            $dbname = "sachin_photogramdb";
+            $servername = getconfig("db_server");
+            $username = getconfig("db_username");
+            $password = getconfig("db_password");
+            $dbname =getconfig("db_name");
             //TODO : add seperate configuration file
 
             // Create connection
@@ -22,11 +24,11 @@ class database
             //return $connection;
             } else {
                 database::$connection=$conn;
-                //echo "new connection established";
+                echo "new connection established";
                 return database::$connection;
             }
         } else {
-            //echo "returning the established connection";
+            echo "returning the established connection";
             return database::$connection;
         }
     }

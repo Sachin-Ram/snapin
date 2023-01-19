@@ -45,12 +45,18 @@ include 'library/load.php';
 //     echo "failure";
 // }
 // print_r($_POST);
-if (user::login('admin1@example.com', 'admin1')) {
-    print("you can login in");
-} else {
-    print("you cant");
-}
+// if (user::login('admin1@example.com', 'admin1')) {
+//     print("you can login in");
+// } else {
+//     print("you cant");
+// }
+//echo $_SERVER['DOCUMENT_ROOT'].'/../photogramconfig.json';
+database::connection();
+database::connection();
+database::connection();
+
 ?>
+
 <pre>
 <?php
 // database::connection();
