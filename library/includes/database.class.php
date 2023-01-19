@@ -24,11 +24,11 @@ class database
             //return $connection;
             } else {
                 database::$connection=$conn;
-                echo "new connection established";
+                //echo "new connection established";
                 return database::$connection;
             }
         } else {
-            echo "returning the established connection";
+            //echo "returning the established connection";
             return database::$connection;
         }
     }
