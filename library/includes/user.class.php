@@ -47,7 +47,7 @@ class user
         if ($resultlogin->num_rows==1) {
             $resarr = $resultlogin->fetch_assoc();
             if (password_verify($pass, $resarr['PASSWORD'])) {
-                return $resarr;
+                return $resarr['USERNAME'];
             // throw new Exception();
             } else {
                 return false;
