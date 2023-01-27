@@ -3,6 +3,7 @@
 include_once 'includes/database.class.php';
 include_once 'includes/session.class.php';
 include_once 'includes/user.class.php';
+include_once 'includes/usersession.class.php';
 
 session::start();
 

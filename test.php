@@ -57,7 +57,8 @@ if (user::login('test123@gmail.com', 'pass')) {
 database::connection();
 database::connection();
 database::connection();
-
+echo "authentication";
+usersession::authenticate('test123@gmail.com', 'pass');
 ?>
 
 <pre>

@@ -47,6 +47,11 @@ class user
         if ($resultlogin->num_rows==1) {
             $resarr = $resultlogin->fetch_assoc();
             if (password_verify($pass, $resarr['PASSWORD'])) {
+                /*
+                1.generate session token
+                2.insert session token
+                3.build session and give session to user
+                 */
                 return $resarr['USERNAME'];
             // throw new Exception();
             } else {
@@ -76,7 +81,8 @@ class user
         $this->conn=database::connection();
         $this->username=$username;
         try {
-            $sql="SELECT * FROM `authentication` WHERE `USERNAME` = '$this->username'";
+            //user object can be constructed by both id and the username
+            $sql="SELECT * FROM `authentication` WHERE `USERNAME` = '$username' OR `id`='$username'";
             $result=$this->conn->query($sql);
             if ($result->num_rows==1) {
                 $arr=$result->fetch_assoc();
@@ -103,6 +109,7 @@ class user
         } elseif (substr($name, 0, 3)=="set") {
             return $this->setdata($property, $arguments[0]);
         }
+        /*can have else part to detect errors during development */
     }
 
 
