@@ -52,6 +52,7 @@ class user
                 2.insert session token
                 3.build session and give session to user
                  */
+                // usersession::authenticate($mail, $pass); //constructing token
                 return $resarr['USERNAME'];
             // throw new Exception();
             } else {

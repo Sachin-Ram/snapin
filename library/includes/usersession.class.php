@@ -21,6 +21,7 @@ class usersession
             $res=$conn->query($sql);
             if ($res) {
                 //echo "inserted";
+                
                 session::set("session_token", $token);
                 return $token;
             } else {
@@ -43,7 +44,7 @@ class usersession
         $this->conn=database::connection();
         $this->id=$id;
         $this->data=null;  //this can be used to store the data pesent in the db
-        $sql="SELECT * FROM `session` WHERE `token` = '$token";
+        $sql="SELECT * FROM `session` WHERE `token` = '$token'";
         $result=$this->conn->query($sql);
         if ($result->num_rows==1) {
             $arr=$result->fetch_assoc();
@@ -61,16 +62,26 @@ class usersession
         return new user($this->uid); //creates an object for user class
     }
 
-    public function deactivate(){           //used to set deactivate the usersession
-
+        /**
+     * Check if the validity of the session is within one hour, else it inactive.
+     *
+     * @return boolean
+     */
+    public function isValid()
+    {
     }
 
-    public function getuser_agent(){        //checks for useragents and prevents session hijacking
-
+    public function getIP()
+    {
     }
 
-    public function getip(){
-
+    public function getUserAgent()
+    {
     }
+
+    public function deactivate()
+    {
+    }
+
     
 }

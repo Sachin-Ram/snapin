@@ -7,6 +7,7 @@ include_once 'includes/usersession.class.php';
 
 session::start();
 
+
 global $__site_config;//contains the configuration file details
 
 $__site_config = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/../photogramconfig.json');
