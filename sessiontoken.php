@@ -9,17 +9,19 @@
 
 
 include 'library/load.php';
-if($_GET["logout"]==true){
+if ($_GET["logout"]==true) {
     echo "session destroyed";
     session::destroy();
-}
-if (session::get('session_token')) {
-    echo "already session exist";
+} elseif (session::get('session_token')) {
     $token=session::get('session_token');
-    echo $token;
-    usersession::authorize($token);
-    $user=$session->getuser();
-    print($user->getFirstname());
+    //echo $token;
+    if (usersession::authorize($token)) {
+        echo "session already exist";
+    }
 } else {
-    echo "please login";
+    if (usersession::authenticate('test123@gmail.com', 'pass')) {
+        echo "session created";
+    } else {
+        echo "login failed";
+    }
 }

@@ -21,7 +21,7 @@ class usersession
             $res=$conn->query($sql);
             if ($res) {
                 //echo "inserted";
-                
+
                 session::set("session_token", $token);
                 return $token;
             } else {
@@ -33,9 +33,11 @@ class usersession
         }
     }
 
-    public static function authorize($token){
-
+    public static function authorize($token)
+    {
         $session=new usersession($token);
+        return true;
+        //function needs to be updated
     }
 
 
@@ -82,6 +84,4 @@ class usersession
     public function deactivate()
     {
     }
-
-    
 }
