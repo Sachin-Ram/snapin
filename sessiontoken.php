@@ -18,6 +18,9 @@ if ($_GET["logout"]==true) {
     if (usersession::authorize($token)) {
         echo "session already exist";
     }
+    else{
+        echo "ip or browser mismatched login again";
+    }
 } else {
     if (usersession::authenticate('test123@gmail.com', 'pass')) {
         echo "session created";

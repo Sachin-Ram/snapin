@@ -36,7 +36,21 @@ class usersession
     public static function authorize($token)
     {
         $session=new usersession($token);
-        return true;
+        try {
+            if ($_SERVER["REMOTE_ADDR"]==$session->getIP()) {
+                if($_SERVER["HTTP_USER_AGENT"]==$session->getUserAgent()){  //matches the user agent and the ip 
+                    return true;
+                }
+                else{
+                    throw new Exception("user agent mismatched");
+                }
+            } 
+            else {
+                throw new Exception("IP mismatched");
+            }
+        } catch(Exception $e) {
+            return false;
+        }
         //function needs to be updated
     }
 
@@ -75,10 +89,12 @@ class usersession
 
     public function getIP()
     {
+        return isset($this->data['ip']) ? $this->data['ip'] : null;
     }
 
     public function getUserAgent()
     {
+        return isset($this->data['user_agent'])?$this->data['user_agent'] :null;
     }
 
     public function deactivate()
