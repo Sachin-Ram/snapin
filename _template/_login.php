@@ -7,8 +7,17 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 
 ?>
 <?php
-if ($logininfo) {
-    print("you can log in ");
+if ($logininfo) {?>
+    
+    <main class="container">
+ <div class="bg-light mt-3 rounded p-5">
+  
+  <form action="index.php">
+    <button btn btn-primary>click here</button>
+  </form>
+ </div>
+</main>
+<?
 } else {
     ?>
 <main class="form-signin">

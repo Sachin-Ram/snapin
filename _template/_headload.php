@@ -10,6 +10,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
+   
 
     <?php
 if (file_exists($_SERVER['DOCUMENT_ROOT'].'/photogram/styling/'.basename($_SERVER['PHP_SELF'], ".php").".css")) {

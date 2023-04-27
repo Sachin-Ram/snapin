@@ -15,12 +15,15 @@ if (isset($_POST['username']) and isset($_POST['password']) and !empty($_POST['p
 <?php
 if ($signinfo) {
     if ($res) {
+      
         ?>
 
 <main class="container">
  <div class="bg-light mt-3 rounded p-5">
   <h1>login successfull</h1>
-  <p class="lead"><a href="<?=$_SERVER['DOCUMENT_ROOT']?>/photogram/login.php">click here to login</a></p>
+  <form action="login.php">
+    <button btn btn-seconary>click here</button>
+  </form>
  </div>
 </main>
    

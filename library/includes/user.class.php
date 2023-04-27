@@ -5,26 +5,26 @@ class user
     // private $conn=null;
     public static function signup($name, $pass, $email, $phnumber)
     {
-        $conn=database::connection();
+        $conn = database::connection();
         //$pass=md5($pass);
-        $clock=[
-            'cost'=>7
+        $clock = [
+            'cost' => 7
         ];
-        $pass=password_hash($pass, PASSWORD_BCRYPT, $clock);
+        $pass = password_hash($pass, PASSWORD_BCRYPT, $clock);
         try {
             $sql = "INSERT INTO `authentication` (`USERNAME`, `PASSWORD`, `EMAIL`, `PHONE NUMBER`, `BLOCKED`, `ACTIVE`)
         VALUES ('$name', '$pass', '$email', '$phnumber', '0', '1')";
-            $result =false;
+            $result = false;
 
             if ($conn->query($sql) === false) {
                 // echo "New record created successfully";
-                return $result=$conn->error;
+                return $result = $conn->error;
                 throw new Exception();
             } else {
                 // echo "Error: " . $sql . "<br>" . $conn->error;
-                return $result=true;
+                return $result = true;
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             // return $conn->error;
         }
 
@@ -36,15 +36,15 @@ class user
 
     public static function login($mail, $pass)
     {
-        $conn=database::connection();
+        $conn = database::connection();
         $sql = "SELECT * FROM `authentication` WHERE `EMAIL` = '$mail'";
         try {
             $resultlogin = $conn->query($sql);
             throw new Exception();
-        } catch(Exception $e) {
+        } catch (Exception $e) {
         }
         //print_r($resultlogin);
-        if ($resultlogin->num_rows==1) {
+        if ($resultlogin->num_rows == 1) {
             $resarr = $resultlogin->fetch_assoc();
             if (password_verify($pass, $resarr['PASSWORD'])) {
                 /*
@@ -54,7 +54,7 @@ class user
                  */
                 // usersession::authenticate($mail, $pass); //constructing token
                 return $resarr['USERNAME'];
-            // throw new Exception();
+                // throw new Exception();
             } else {
                 return false;
             }
@@ -79,21 +79,21 @@ class user
     public function __construct($username)
     {
         //if($this->conn==null)
-        $this->conn=database::connection();
-        $this->username=$username;
+        $this->conn = database::connection();
+        $this->username = $username;
         try {
             //user object can be constructed by both id and the username
-            $sql="SELECT * FROM `authentication` WHERE `USERNAME` = '$username' OR `id`='$username'";
-            $result=$this->conn->query($sql);
-            if ($result->num_rows==1) {
-                $arr=$result->fetch_assoc();
+            $sql = "SELECT * FROM `authentication` WHERE `USERNAME` = '$username' OR `id`='$username'";
+            $result = $this->conn->query($sql);
+            if ($result->num_rows == 1) {
+                $arr = $result->fetch_assoc();
                 //echo $arr["USERNAME"];
-                $this->id=$arr['ID'];  //fetching the user id which is the foreign key
+                $this->id = $arr['ID'];  //fetching the user id which is the foreign key
                 //echo $this->id;
             } else {
                 throw new Exception();
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             echo "username not found";
         }
     }
@@ -105,9 +105,9 @@ class user
         $property = (preg_replace('/\B([A-Z])/', '_$1', $property));
         //echo $property;
 
-        if (substr($name, 0, 3)=="get") {
+        if (substr($name, 0, 3) == "get") {
             return $this->getdata($property);
-        } elseif (substr($name, 0, 3)=="set") {
+        } elseif (substr($name, 0, 3) == "set") {
             return $this->setdata($property, $arguments[0]);
         }
         /*can have else part to detect errors during development */
@@ -123,9 +123,9 @@ class user
     public function setdata($row, $data)
     {
         if (!$this->conn) {
-            $this->conn=database::connection;
+            $this->conn = database::connection();
         }
-        $sql=" UPDATE `users` SET `$row` ='$data' WHERE `ID` = '$this->id';";
+        $sql = " UPDATE `users` SET `$row` ='$data' WHERE `ID` = '$this->id';";
         //$sql = "UPDATE `users` SET `$var`='$data' WHERE `id`='$this->id';";
         if ($this->conn->query($sql)) {
             return true;
@@ -138,12 +138,12 @@ class user
     public function getdata($row)
     {
         if (!$this->conn) {
-            $this->conn=database::connection;
+            $this->conn = database::connection();
         }
-        $sql="SELECT `$row` FROM `users` WHERE `ID` = '$this->id'";  //fetching data from the db using the col name
-        $result=$this->conn->query($sql);
+        $sql = "SELECT `$row` FROM `users` WHERE `ID` = '$this->id'";  //fetching data from the db using the col name
+        $result = $this->conn->query($sql);
         if ($result->num_rows) {
-            $val=$result->fetch_assoc();
+            $val = $result->fetch_assoc();
             return $val["$row"];
         } else {
             return null;
@@ -169,7 +169,7 @@ class user
     public function setdateofbirth($year, $month, $day)
     {
         if (checkdate($month, $day, $year)) {
-            return $this->setdob("DOB", $year.$month.$day);
+            return $this->setdob("DOB", $year . $month . $day);
         }
     }
     // public function getdateofbirth()
