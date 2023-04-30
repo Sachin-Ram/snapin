@@ -175,54 +175,41 @@
     </div>
   </div>
 </div> -->
-       <div class="col" data-post-id="1">
-         <div class="card shadow-sm">
-           <img src="https://th.bing.com/th?id=OIP.6NCenGi2L11Bj2grOxFa_wHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="" height="225px" width="420px">
-           <div class="card-body">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. tempus</p>
-             <div class="d-flex justify-content-between align-items-center">
-               <div class="btn-group">
-                 <button type="button" class="btn btn-sm btn-outline-secondary like-button">Like</button>
-                 <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-               </div>
-               <small class="text-muted like-count">0 likes</small>
-             </div>
-           </div>
-         </div>
-       </div>
+<?php
+$conn = mysqli_connect('mysql.selfmade.ninja:3306', 'sachin', 'sachinram10', 'sachin_photogramdb');
+
+// Retrieve the image data from the database
+$query = "SELECT * FROM images";
+$result = mysqli_query($conn, $query);
 
 
-       <div class="col" data-post-id="2">
-         <div class="card shadow-sm">
-           <img src="https://th.bing.com/th?id=OIP.6NCenGi2L11Bj2grOxFa_wHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="" height="225px" width="420px">
-           <div class="card-body">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. tempus</p>
-             <div class="d-flex justify-content-between align-items-center">
-               <div class="btn-group">
-                 <button type="button" class="btn btn-sm btn-outline-secondary like-button">Like</button>
-                 <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-               </div>
-               <small class="text-muted like-count">0 likes</small>
-             </div>
-           </div>
-         </div>
-       </div>
 
-       <div class="col" data-post-id="2">
-         <div class="card shadow-sm">
-           <img src="https://th.bing.com/th?id=OIP.6NCenGi2L11Bj2grOxFa_wHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="" height="225px" width="420px">
-           <div class="card-body">
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. tempus</p>
-             <div class="d-flex justify-content-between align-items-center">
-               <div class="btn-group">
-                 <button type="button" class="btn btn-sm btn-outline-secondary like-button">Like</button>
-                 <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-               </div>
-               <small class="text-muted like-count">0 likes</small>
-             </div>
-           </div>
-         </div>
-       </div>
+
+
+
+// Loop through the results and display each image
+while ($row = mysqli_fetch_assoc($result)) {?>
+<div class="col" data-post-id="1">
+  <div class="card shadow-sm">
+    
+    <?echo '<img src="data:' . $row['type'] . ';base64,' . base64_encode($row['data']) . '">';?>
+
+<div class="card-body">
+<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. tempus</p>
+<div class="d-flex justify-content-between align-items-center">
+  <div class="btn-group">
+  <?echo '<button class="btn btn-sm btn-outline-secondary" onclick="likeImage(' . $row['id'] . ')">Like</button>';?>
+    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+  </div>
+  <?echo '<div id="like-count-' . $row['id'] . '">' . $row['like_count'] . '</div>';?>
+</div>
+</div>
+</div>
+</div>
+<?
+}
+?>
+
      </div>
    </div>
  </div>

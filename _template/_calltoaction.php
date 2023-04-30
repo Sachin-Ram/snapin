@@ -6,6 +6,10 @@
         <p>
           <a href="#" class="btn btn-primary my-2">LOGIN</a>
           <a href="#" class="btn btn-secondary my-2">LOG OUT</a>
+          <form action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <input type="submit" name="submit" value="Upload">
+          </form>
         </p>
       </div>
     </div>

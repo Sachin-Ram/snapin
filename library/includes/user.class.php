@@ -53,6 +53,7 @@ class user
                 3.build session and give session to user
                  */
                 // usersession::authenticate($mail, $pass); //constructing token
+                setcookie('userid',$resarr['ID']);
                 return $resarr['USERNAME'];
                 // throw new Exception();
             } else {

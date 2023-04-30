@@ -22,7 +22,7 @@ if ($signinfo) {
  <div class="bg-light mt-3 rounded p-5">
   <h1>login successfull</h1>
   <form action="login.php">
-    <button btn btn-seconary>click here</button>
+    <button class="btn btn-seconary">click here</button>
   </form>
  </div>
 </main>

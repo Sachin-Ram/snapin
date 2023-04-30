@@ -34,35 +34,19 @@ include 'library/load.php';
   console.log('jQuery is working!');
 });
 
-$(document).ready(function() {
-  $('.like-button').click(function() {
-    var postId = $(this).closest('.col').data('post-id'); // Get the ID of the post
-    var likeCount = $(this).closest('.card-body').find('.like-count'); // Get the element that displays the like count
-
-    // Send an AJAX request to the server to update the like count
-    $.ajax({
-      url: 'count.php',
-      method: 'POST',
-      data: {postId: postId},
-      success: function(data) {
-        console.log(data);
-        console.log(data);
-        var likeCount = parseInt(data);
-        if (!isNaN(likeCount)) {
-      // Update the like count element
-      like-count.text(likeCount + " likes");
-    } else {
-      // Handle the undefined like count
-      like-count.text("0 likes");
-    }
-      },
-      error: function() {
-        alert('An error occurred while updating the like count.');
-      }
-    });
-  });
-});
-
+function likeImage(imageId) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'like_image.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            document.getElementById('like-count-' + imageId).innerHTML = xhr.responseText;
+        } else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send('image_id=' + imageId);
+}
 
       </script>
   </body>

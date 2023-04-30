@@ -7,13 +7,15 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 
 ?>
 <?php
-if ($logininfo) {?>
+if ($logininfo) {
+  
+  ?>
     
     <main class="container">
  <div class="bg-light mt-3 rounded p-5">
   
   <form action="index.php">
-    <button btn btn-primary>click here</button>
+    <button class="btn btn-primary">click here</button>
   </form>
  </div>
 </main>
