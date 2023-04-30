@@ -6,10 +6,19 @@
         <p>
           <a href="#" class="btn btn-primary my-2">LOGIN</a>
           <a href="#" class="btn btn-secondary my-2">LOG OUT</a>
+          
+          
           <form action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="image">
-            <input type="submit" name="submit" value="Upload">
+          <div class="row">
+          <div class="col-md-8">
+            <input class="form-control" type="file" id="formFile" name="image">
+          </div>
+            <div class="col-md-4">
+            <input type="submit" name="submit" value="Upload" class="btn btn-outline-secondary">
+          </div>
           </form>
+          </div>
+          </div>
         </p>
       </div>
     </div>
