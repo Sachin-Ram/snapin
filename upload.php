@@ -36,4 +36,13 @@ mysqli_query($conn, $query);
 // while ($row = mysqli_fetch_assoc($result)) {
 //   echo '<img src="data:' . $row['type'] . ';base64,' . base64_encode($row['data']) . '">';
 // }
-
+?>
+<link href="/photogram/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<main class="container">
+ <div class="bg-light mt-3 rounded p-5">
+  <h1>Image uploaded</h1>
+  <form action="index.php">
+    <button class="btn btn-seconary">click here</button>
+  </form>
+ </div>
+</main>
